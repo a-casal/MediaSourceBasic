@@ -1,19 +1,23 @@
 // BBB : https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd
 // ref: https://reference.dashif.org/dash.js/nightly/samples/dash-if-reference-player/index.html
 
-var baseUrl = "https://dash.akamaized.net/akamai/bbb_30fps/";
-var initUrl = baseUrl + "bbb_30fps_480x270_600k/bbb_30fps_480x270_600k_0.m4v";
+//var baseUrl = "https://dash.akamaized.net/akamai/bbb_30fps/";
+//var initUrl = baseUrl + "bbb_30fps_480x270_600k/bbb_30fps_480x270_600k_0.m4v";
+var baseUrl = "https://dash.akamaized.net/dash264/TestCasesMCA/dolby/3/1/";
+var initUrl = baseUrl + "ChID_voices_20_128_ddp_V.mp4";
 
-var initAudioUrl = baseUrl + "bbb_a64k/bbb_a64k_0.m4a";
+//var initAudioUrl = baseUrl + "bbb_a64k/bbb_a64k_0.m4a";
+var initAudioUrl = baseUrl + "ChID_voices_20_128_ddp_A.mp4";
 
-var templateUrl =
-  baseUrl + "bbb_30fps_480x270_600k/bbb_30fps_480x270_600k_$Number$.m4v";
-var templateUrlForAudio = baseUrl + "bbb_a64k/bbb_a64k_$Number$.m4a";
+//var templateUrl =
+//  baseUrl + "bbb_30fps_480x270_600k/bbb_30fps_480x270_600k_$Number$.m4v";
+//var templateUrlForAudio = baseUrl + "bbb_a64k/bbb_a64k_$Number$.m4a";
 var sourceBuffer;
 var audioSourceBuffer;
 var index = 0;
 var audioIndex = 0;
-var numberOfChunks = 159;
+//var numberOfChunks = 159;
+var numberOfChunks = 1;
 var video = document.querySelector("video");
 var ms = new MediaSource();
 
@@ -30,8 +34,10 @@ function onPageLoad() {
 
 function onMediaSourceOpen() {
   // create source buffer
-  sourceBuffer = ms.addSourceBuffer('video/mp4; codecs="avc1.4d401f"');
-  audioSourceBuffer = ms.addSourceBuffer('audio/mp4; codecs="mp4a.40.5"');
+  //sourceBuffer = ms.addSourceBuffer('video/mp4; codecs="avc1.4d401f"');
+  sourceBuffer = ms.addSourceBuffer('video/mp4; codecs="avc1.42801e"');
+  //audioSourceBuffer = ms.addSourceBuffer('audio/mp4; codecs="mp4a.40.5"');
+  audioSourceBuffer = ms.addSourceBuffer('audio/mp4; codecs="ec-3"');
   // when ever one segment is loaded go for next
   sourceBuffer.addEventListener("updateend", nextSegment);
   audioSourceBuffer.addEventListener("updateend", nextAudioSegment);
