@@ -92,3 +92,5 @@ function GET(url, callback) {
 
   xhr.send();
 }
+
+document.onload = onPageLoad();
