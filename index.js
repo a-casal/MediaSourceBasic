@@ -1,4 +1,5 @@
 // BBB : https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd
+// Dolby Digital Plus EC-3: https://dash.akamaized.net/dash264/TestCasesMCA/dolby/3/1/ChID_voices_20_128_ddp.mpd
 // ref: https://reference.dashif.org/dash.js/nightly/samples/dash-if-reference-player/index.html
 
 //var baseUrl = "https://dash.akamaized.net/akamai/bbb_30fps/";
