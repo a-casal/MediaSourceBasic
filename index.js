@@ -4,15 +4,18 @@
 
 //var baseUrl = "https://dash.akamaized.net/akamai/bbb_30fps/";
 //var initUrl = baseUrl + "bbb_30fps_480x270_600k/bbb_30fps_480x270_600k_0.m4v";
+//var initAudioUrl = baseUrl + "bbb_a64k/bbb_a64k_0.m4a";
 var baseUrl = "https://dash.akamaized.net/dash264/TestCasesMCA/dolby/3/1/";
 var initUrl = baseUrl + "ChID_voices_20_128_ddp_V.mp4";
-
-//var initAudioUrl = baseUrl + "bbb_a64k/bbb_a64k_0.m4a";
 var initAudioUrl = baseUrl + "ChID_voices_20_128_ddp_A.mp4";
 
 //var templateUrl =
 //  baseUrl + "bbb_30fps_480x270_600k/bbb_30fps_480x270_600k_$Number$.m4v";
 //var templateUrlForAudio = baseUrl + "bbb_a64k/bbb_a64k_$Number$.m4a";
+var templateUrl =
+  baseUrl + "ChID_voices_20_128_ddp_V.mp4";
+var templateUrlForAudio = baseUrl + "ChID_voices_20_128_ddp_A.mp4";
+
 var sourceBuffer;
 var audioSourceBuffer;
 var index = 0;
