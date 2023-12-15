@@ -37,24 +37,33 @@ function onPageLoad() {
 }
 
 function onMediaSourceOpen() {
+  try {
   // create source buffer
   //sourceBuffer = ms.addSourceBuffer('video/mp4; codecs="avc1.4d401f"');
   sourceBuffer = ms.addSourceBuffer('video/mp4; codecs="avc1.42801e"');
   // when ever one segment is loaded go for next
   sourceBuffer.addEventListener("updateend", nextSegment);
+    // fire init segemnts
+  GET(initUrl, appendToBuffer);
+  }
+  catch (errV) {
+    console.log("Error creating video buffer.");
+    console.error(errV);
+  }
+  
   //audioSourceBuffer = ms.addSourceBuffer('audio/mp4; codecs="mp4a.40.5"');
   try {
+    // create source buffer
     audioSourceBuffer = ms.addSourceBuffer('audio/mp4; codecs="ec-3"');
     // when ever one segment is loaded go for next
     audioSourceBuffer.addEventListener("updateend", nextAudioSegment);
     // fire init segemnts
     GET(initAudioUrl, appendToAudioBuffer);
   }
-  catch (err) {
-    console.error(err);
+  catch (errA) {
+    console.log("Error creating audio buffer.");
+    console.error(errA);
   }
-  // fire init segemnts
-  GET(initUrl, appendToBuffer);
 
   // play
   video.muted = true;
