@@ -57,6 +57,7 @@ function onMediaSourceOpen() {
   GET(initUrl, appendToBuffer);
 
   // play
+  video.muted = true;
   video.play();
 }
 
