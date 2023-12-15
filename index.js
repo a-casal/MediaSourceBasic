@@ -91,6 +91,7 @@ function nextAudioSegment() {
     if (index > numberOfChunks) {
       audioSourceBuffer.removeEventListener("updateend", nextAudioSegment);
     }
+    console.log("Next audio segment received successfully.");
   }
   catch {
     console.log("Error getting next audio segment.");
@@ -109,10 +110,11 @@ function appendToAudioBuffer(audioChunk) {
   try {
     if (audioChunk) {
       audioSourceBuffer.appendBuffer(new Uint8Array(audioChunk));
+      console.log("Audio chuck appended successfully.");
     }
   }
   catch {
-    console.log("Error appending chuck.");
+    console.log("Error appending audio chuck.");
     console.error(errA);
   }
 }
