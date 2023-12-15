@@ -53,19 +53,19 @@ function onMediaSourceOpen() {
   }
   
   //audioSourceBuffer = ms.addSourceBuffer('audio/mp4; codecs="mp4a.40.5"');
-//  try {
+  try {
     // create source buffer
-//    audioSourceBuffer = ms.addSourceBuffer('audio/mp4; codecs="ec-3"');
+    audioSourceBuffer = ms.addSourceBuffer('audio/mp4; codecs="ec-3"');
     // when ever one segment is loaded go for next
-//    audioSourceBuffer.addEventListener("updateend", nextAudioSegment);
+    audioSourceBuffer.addEventListener("updateend", nextAudioSegment);
     // fire init segemnts
-//    GET(initAudioUrl, appendToAudioBuffer);
-//    console.log("Audio buffer successfully created.");
-//  }
-//  catch (errA) {
- //   console.log("Error creating audio buffer.");
-//    console.error(errA);
-//  }
+    GET(initAudioUrl, appendToAudioBuffer);
+    console.log("Audio buffer successfully created.");
+  }
+  catch (errA) {
+    console.log("Error creating audio buffer.");
+    console.error(errA);
+  }
 
   // play
   video.muted = true;
@@ -84,11 +84,16 @@ function nextSegment() {
 
 // get next audio segment based on index and append, once everything loaded unlisten to the event
 function nextAudioSegment() {
-  var audioUrl = templateUrlForAudio.replace("$Number$", audioIndex);
-  GET(audioUrl, appendToAudioBuffer);
-  audioIndex++;
-  if (index > numberOfChunks) {
-    audioSourceBuffer.removeEventListener("updateend", nextAudioSegment);
+  try {
+    var audioUrl = templateUrlForAudio.replace("$Number$", audioIndex);
+    GET(audioUrl, appendToAudioBuffer);
+    audioIndex++;
+    if (index > numberOfChunks) {
+      audioSourceBuffer.removeEventListener("updateend", nextAudioSegment);
+    }
+  catch {
+    console.log("Error getting next audio segment.");
+    console.error(errA);
   }
 }
 
@@ -100,8 +105,14 @@ function appendToBuffer(videoChunk) {
 }
 
 function appendToAudioBuffer(audioChunk) {
-  if (audioChunk) {
-    audioSourceBuffer.appendBuffer(new Uint8Array(audioChunk));
+  try {
+    if (audioChunk) {
+      audioSourceBuffer.appendBuffer(new Uint8Array(audioChunk));
+    }
+  }
+  catch {
+    console.log("Error appending chuck.");
+    console.error(errA);
   }
 }
 
