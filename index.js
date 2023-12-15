@@ -41,7 +41,12 @@ function onMediaSourceOpen() {
   //sourceBuffer = ms.addSourceBuffer('video/mp4; codecs="avc1.4d401f"');
   sourceBuffer = ms.addSourceBuffer('video/mp4; codecs="avc1.42801e"');
   //audioSourceBuffer = ms.addSourceBuffer('audio/mp4; codecs="mp4a.40.5"');
-  audioSourceBuffer = ms.addSourceBuffer('audio/mp4; codecs="ec-3"');
+  try {
+    audioSourceBuffer = ms.addSourceBuffer('audio/mp4; codecs="ec-3"');
+  }
+  catch (err) {
+    console.error(err);
+  }
   // when ever one segment is loaded go for next
   sourceBuffer.addEventListener("updateend", nextSegment);
   audioSourceBuffer.addEventListener("updateend", nextAudioSegment);
