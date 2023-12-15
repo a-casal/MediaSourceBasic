@@ -91,6 +91,7 @@ function nextAudioSegment() {
     if (index > numberOfChunks) {
       audioSourceBuffer.removeEventListener("updateend", nextAudioSegment);
     }
+  }
   catch {
     console.log("Error getting next audio segment.");
     console.error(errA);
