@@ -45,6 +45,7 @@ function onMediaSourceOpen() {
   sourceBuffer.addEventListener("updateend", nextSegment);
     // fire init segemnts
   GET(initUrl, appendToBuffer);
+  console.log("Video buffer successfully created.");
   }
   catch (errV) {
     console.log("Error creating video buffer.");
@@ -59,6 +60,7 @@ function onMediaSourceOpen() {
     audioSourceBuffer.addEventListener("updateend", nextAudioSegment);
     // fire init segemnts
     GET(initAudioUrl, appendToAudioBuffer);
+    console.log("Audio buffer successfully created.");
   }
   catch (errA) {
     console.log("Error creating audio buffer.");
