@@ -53,19 +53,19 @@ function onMediaSourceOpen() {
   }
   
   //audioSourceBuffer = ms.addSourceBuffer('audio/mp4; codecs="mp4a.40.5"');
-  try {
+//  try {
     // create source buffer
-    audioSourceBuffer = ms.addSourceBuffer('audio/mp4; codecs="ec-3"');
+//    audioSourceBuffer = ms.addSourceBuffer('audio/mp4; codecs="ec-3"');
     // when ever one segment is loaded go for next
-    audioSourceBuffer.addEventListener("updateend", nextAudioSegment);
+//    audioSourceBuffer.addEventListener("updateend", nextAudioSegment);
     // fire init segemnts
-    GET(initAudioUrl, appendToAudioBuffer);
-    console.log("Audio buffer successfully created.");
-  }
-  catch (errA) {
-    console.log("Error creating audio buffer.");
-    console.error(errA);
-  }
+//    GET(initAudioUrl, appendToAudioBuffer);
+//    console.log("Audio buffer successfully created.");
+//  }
+//  catch (errA) {
+ //   console.log("Error creating audio buffer.");
+//    console.error(errA);
+//  }
 
   // play
   video.muted = true;
