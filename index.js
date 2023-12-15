@@ -68,8 +68,14 @@ function onMediaSourceOpen() {
   }
 
   // play
-  video.muted = true;
-  video.play();
+  try {
+    video.muted = true;
+    video.play();
+    console.log("Playback successful.");
+  }
+  catch {
+    console.log("Playback failed.");
+  }
 }
 
 // get next segment based on index and append, once everything loaded unlisten to the event
